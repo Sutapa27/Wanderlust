@@ -1,0 +1,43 @@
+/* public/css/dashboard.css */
+
+.profile-circle {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .profile-circle {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+  }
+}
+
+.stat-card {
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.info-card {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 576px) {
+  .info-card {
+    font-size: 0.75rem;
+  }
+}
+
+.contact-label {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 576px) {
+  .contact-label {
+    font-size: 0.75rem;
+  }
+}

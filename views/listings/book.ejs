@@ -1,0 +1,101 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-8 offset-2 d-flex align-items-center mb-3">
+      <a
+        href="/listings/<%= listing._id %>"
+        class="text-dark me-3"
+        style="text-decoration: none"
+      >
+        <i class="bi bi-arrow-left" style="font-size: 2rem"></i>
+      </a>
+      &nbsp;
+      <h2 class="m-0 fs-4 fs-md-3 fs-lg-2">Book Your Stay</h2>
+    </div>
+    <!-- Card section -->
+    <div class="col-8 offset-2">
+      <div class="card p-4 mb-4">
+        <!-- Price Breakdown -->
+        <div class="mb-4">
+          <h5>Price Details</h5>
+          <hr />
+          <div class="d-flex justify-content-between mb-2">
+            <span>Price per night:</span>
+            <span
+              >&#8377;<span id="base-price"
+                ><%= listing.price.toLocaleString("en-IN") %></span
+              ></span
+            >
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>GST (18%):</span>
+            <span
+              >&#8377;<span id="gst-amount"
+                ><%= (listing.price * 0.18).toLocaleString("en-IN") %></span
+              ></span
+            >
+          </div>
+          <hr />
+          <div class="d-flex justify-content-between">
+            <strong>Total Amount:</strong>
+            <strong
+              >&#8377;<span id="total-price"
+                ><%= (listing.price * 1.18).toLocaleString("en-IN") %></span
+              ></strong
+            >
+          </div>
+        </div>
+        <form
+          id="booking-form"
+          action="/bookings/<%= listing._id %>/create-checkout-session"
+          method="POST"
+        >
+          <div class="mb-3">
+            <label for="checkin" class="form-label">Check-in Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="checkin"
+              name="checkin"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="checkout" class="form-label">Check-out Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="checkout"
+              name="checkout"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="guests" class="form-label">Number of Guests</label>
+            <input
+              type="number"
+              class="form-control"
+              id="guests"
+              name="guests"
+              min="1"
+              value="1"
+              required
+            />
+          </div>
+          <!-- Hidden field to pass total price with GST -->
+          <input
+            type="hidden"
+            name="totalPrice"
+            value="<%= listing.price * 1.18 %>"
+          />
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="btn btn-success">
+              Proceed to Payment
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

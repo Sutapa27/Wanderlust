@@ -1,0 +1,222 @@
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
+
+/* Navbar */
+.navbar{
+    height: 5rem;
+    background-color: #fff;
+}
+.fa-compass{
+    color: #fe424d;
+    font-size: 2.5rem;
+}
+.nav-link{
+    color: #222222 !important;
+    font-size: 0.9rem !important;
+}
+.navbar-nav{
+    border-radius: 2rem;
+    
+}
+/* Sticky search bar styling */
+.sticky-bottom-search {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  width: 100%;
+  z-index: 1030; /* stays above most elements */
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Hide on scroll down */
+.sticky-bottom-search.hide {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* Input styling */
+.sticky-bottom-search input {
+  font-size: 1rem;
+  border-radius: 25px;
+
+}
+.sticky-bottom-search input:focus {
+  box-shadow: 0 0 5px rgba(255, 56, 92, 0.3);
+}
+
+
+.sticky-bottom-search form {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+
+@media (min-width: 768px) {
+  .sticky-bottom-search {
+    display: none; /* hidden on medium & large screens */
+  }
+}
+
+
+
+
+/* Footer */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+.f-info-links a:hover{
+     text-decoration: underline;
+}
+.f-info-socials,
+.f-info-links,
+.f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+.f-info{
+    width: 100% ;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;  
+}
+
+/* cards */
+.listing-card{
+    
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.show{
+   width: 60vw; 
+}
+.price{
+    text-decoration: underline;
+    
+}
+.card-img-top{
+    border-radius: 1rem !important ;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+.card-text{
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration: none;
+}
+/* overlay-effect or card affect */
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color:white;
+}
+/* --- Listing gallery --- */
+.listing-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.listing-image-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.listing-image-item img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* New-page */
+.add-btn{
+    background-color: #fe424d !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+/* Show page */
+.show-img{
+    height: 40vh;
+}
+
+.btns{
+    display: flex;
+}
+
+.trash{
+    border: none;
+    
+}
+#suggestions {
+  max-height: 200px;
+  overflow-y: auto;
+  border-top: none;
+  border-radius: 0 0 0.375rem 0.375rem;
+}
+
+#map{
+    height:16rem;
+    width: 100vw;     /* allow responsive */
+  max-width: 50vw;
+    border-radius: 1rem
+}
+.goolge{
+    width: 100%;
+}
+
+/*review card */
+/* Default (desktop) – normal stars */
+.starability-result {
+  transform: scale(1);
+  transform-origin: left center;
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .starability-result {
+    transform: scale(0.85);
+  }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .starability-result {
+    transform: scale(0.75);
+  }
+}
+
+/* Very small phones */
+@media (max-width: 576px) {
+  .starability-result {
+    transform: scale(0.65);
+  }
+}
+
+.comment-box .card-title { font-size: 1rem; }
+.comment-box .card-text { font-size: 0.9rem; }

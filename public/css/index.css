@@ -1,0 +1,222 @@
+.icon-tax {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  #filters {
+    display: flex;
+    width: 80%;
+    overflow: scroll;
+  }
+
+  .nav-icons {
+    color: black;
+  }
+
+  .filter {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    opacity: 0.7;
+  }
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+    color: black;
+  }
+
+  .tax-info {
+    display: none;
+  }
+
+  .tax-toggle {
+    font-size: 0.8rem;
+    width: auto;
+    min-width: 120px;
+    max-width: 200px;
+    height: auto;
+    min-height: 50px;
+    padding: 5px 8px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-check-reverse {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .form-check-reverse .form-check-label {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .form-check-reverse .form-check-input {
+    width: 2rem;
+    height: 1rem;
+    margin: 0;
+  }
+
+  /* For tablet/medium screens between 768px and 1189px */
+  @media (min-width: 768px) and (max-width: 1189px) {
+    .tax-toggle {
+      font-size: 0.8rem;
+      min-width: 160px;
+      max-width: 200px;
+      padding: 5px 8px;
+    }
+
+    .form-check-reverse {
+      flex-wrap: nowrap;
+      gap: 6px;
+    }
+
+    .form-check-reverse .form-check-label {
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .form-check-reverse .form-check-input {
+      width: 1.8rem;
+      height: 0.95rem;
+      flex-shrink: 0; /* Prevents switch from shrinking */
+    }
+  }
+
+  .custom-modal {
+    max-width: 400px;
+    border-radius: 2rem;
+  }
+
+  .modal-content {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2rem;
+  }
+
+  .modal-icon {
+    font-size: 80px;
+    color: #ff385c;
+    margin-top: 0.5rem;
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .btn-dark {
+    width: 80%;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    padding: 0.6rem;
+    background-color: #f95a77;
+    border: none;
+  }
+
+  .location-icon {
+    color: red;
+  }
+
+  .listing-card {
+    position: relative;
+  }
+
+  .wishlist-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.1s ease;
+  }
+
+  .wishlist-btn:hover {
+    transform: scale(1.07);
+  }
+
+  .wishlist-btn:active {
+    transform: scale(0.95);
+  }
+
+  .wishlist-btn i {
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+    -webkit-text-stroke: 2px white;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
+  }
+
+  .wishlist-btn.active i {
+    color: #ff385c;
+    -webkit-text-stroke: 0;
+  }
+
+  .wishlist-btn:hover i {
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .wishlist-btn.active:hover i {
+    color: #e00b41;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .tax-toggle {
+      font-size: 0.7rem;
+      min-width: 120px;
+      padding: 6px 10px;
+    }
+
+    .form-check-reverse .form-check-label {
+      font-size: 0.65rem;
+    }
+
+    .form-check-reverse .form-check-input {
+      width: 1.75rem;
+      height: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tax-toggle {
+      font-size: 0.65rem;
+      min-width: 110px;
+      max-width: 140px;
+      padding: 5px 8px;
+    }
+
+    .form-check-reverse .form-check-label {
+      font-size: 0.6rem;
+    }
+
+    .form-check-reverse .form-check-input {
+      width: 1.5rem;
+      height: 0.8rem;
+    }
+  }

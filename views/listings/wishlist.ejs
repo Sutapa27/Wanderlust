@@ -1,0 +1,72 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/wishlist.css">
+
+<div class="container mt-2">
+  
+    <a
+
+            href="<%=backUrl %>"
+
+class="text-dark me-2"
+
+style="text-decoration: none"
+
+          >
+            <i class="fa-solid fa-arrow-left" style="font-size: 1.4rem"></i>
+
+          </a> &nbsp;
+  <div class="wishlist-header">
+    
+    <h3 ><i class="fa-solid fa-heart"></i> Your Wishlist</h3>
+    <p class="text-muted">You have <%= wishlist.length %> saved <%= wishlist.length === 1 ? 'property' : 'properties' %></p>
+  </div>
+
+  <% if (wishlist.length === 0) { %>
+    <div class="empty-wishlist">
+      <i class="fa-regular fa-heart"></i>
+      <p>Your wishlist is empty</p>
+      <p class="text-muted">Start exploring and save your favorite places!</p>
+      <a href="/listings" class="btn btn-primary mt-3" style="background-color: #ff385c; border: none;">
+        Explore Listings
+      </a>
+    </div>
+  <% } else { %>
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 mt-3">
+      <% for(let listing of wishlist) { %>
+        <div class="col mb-4">
+          <div class="card listing-card">
+            <!-- Remove Button -->
+            <button class="remove-btn" onclick="removeFromWishlist(event, '<%= listing._id %>')">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <a href="/listings/<%= listing._id %>" class="text-decoration-none">
+              <img src="<%= listing.images && listing.images.length > 0 ? listing.images[0].url : '' %>"
+                class="card-img-top" alt="listing_image" style="height: 20rem; object-fit: cover;">
+              <div class="card-body">
+                <p class="card-text d-flex justify-content-between align-items-center" style="color: #222222;">
+                  <b><%= listing.title %></b>
+                  <% if (listing.reviews && listing.reviews.length > 0) { %>
+                    <span class="text-dark ms-2" style="font-size: 0.8rem;">
+                      <i class="fa-solid fa-star text-warning"></i> 
+                      <%= listing.avgRating ? listing.avgRating : "0.0" %>
+                    </span>
+                  <% } %>
+                </p>
+                <p class="text-muted mb-1">
+                  <i class="bi bi-geo-alt-fill location-icon"></i>
+                  <%= listing.location %>, <%= listing.country %>
+                </p>
+                <p style="color: #222222;">
+                  &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
+</div>
+
+<script src="/js/wishlist.js"></script>></script>

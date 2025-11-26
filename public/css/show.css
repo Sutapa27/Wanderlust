@@ -1,0 +1,54 @@
+
+  
+  /* For large screens - left image only has left rounded corners */
+  @media (min-width: 768px) {
+    .main-image {
+      border-radius: 1rem !important;
+    }
+  }
+
+  /* For small screens - full border radius */
+  @media (max-width: 767px) {
+    .main-image {
+      border-radius: 1rem !important;
+    }
+  }
+
+  .small-image {
+    border-radius: 0.5rem;
+  }
+
+  .small-image:hover,
+  .main-image:hover {
+    opacity: 0.9;
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+  }
+
+  .modal-image:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .wishlist-btn-show {
+    transition: transform 0.2s ease;
+  }
+
+  .wishlist-btn-show:hover {
+    transform: scale(1.1);
+  }
+
+  .wishlist-btn-show .fa-heart {
+    color: #ff385c;
+    transition: all 0.3s ease;
+  }
+
+  .wishlist-btn-show .fa-heart.fa-regular {
+    color: #222;
+  }
+
+  .wishlist-btn-show:hover .fa-heart {
+    color: #ff385c;
+  }
+

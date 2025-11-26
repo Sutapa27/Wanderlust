@@ -1,0 +1,197 @@
+<style>
+  .logo-name {
+    color: #ff385c !important;
+    font-size: 1.5rem !important;
+    font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    font-size: 1.5rem;
+  }
+
+  .navbar-toggler {
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: #dddddd;
+    border: none;
+  }
+
+  .navbar-toggler-icon {
+    font-size: 0.8rem;
+    color: black;
+    align-self: center;
+  }
+
+  .search-input {
+    border-radius: 50px;
+    padding: 0.6rem 1rem;
+    border: 1px solid #ddd;
+    width: 20rem;
+    transition: all 0.3s ease;
+  }
+
+  .search-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 56, 92, 0.3);
+  }
+
+  .search-btn {
+    border: none;
+    background-color: #ff385c;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    text-align: center;
+  }
+
+  .search-btn:hover {
+    color: #e0314b;
+  }
+
+  form {
+    position: relative;
+  }
+
+  .user-icon-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
+  }
+
+  .user-icon-toggle:focus {
+    outline: none;
+  }
+
+  /* Remove dropdown arrow */
+  .nav-item.dropdown .dropdown-toggle::after {
+    display: none;
+  }
+
+  /* Sleek dropdown styling */
+  .user-dropdown-menu {
+    max-width: 100px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid #e0e0e0 !important;
+    padding: 0.5rem 0 !important;
+  }
+
+  .user-dropdown-menu .dropdown-item {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .user-dropdown-menu .dropdown-item:hover {
+    background-color: #f7f7f7;
+  }
+
+  .user-dropdown-menu .dropdown-item i {
+    width: 20px;
+  }
+
+  .user-dropdown-menu .dropdown-divider {
+    margin: 0.5rem 0;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
+  <div class="container justify-content-between">
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-solid fa-compass"></i>
+    </a>
+    <div class="navbar-nav d-none d-lg-block">
+      <a class="nav-link logo-name" href="/listings">Wanderlust</a>
+    </div>
+    <div class="navbar-nav mx-auto d-none d-md-block">
+      <form
+        class="position-relative d-flex align-items-center"
+        action="/listings/search"
+        method="GET"
+        role="search"
+      >
+        <input
+          class="form-control search-input ps-5"
+          name="location"
+          type="search"
+          placeholder="Search your Destinations"
+          required
+        />
+        <button
+          class="btn search-btn position-absolute end-0 me-1"
+          type="submit"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Main navbar toggle for mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse bg-light rounded-5"
+      id="navbarNavAltMarkup"
+    >
+      <div class="navbar-nav ms-auto">
+        <!-- Become a Host - always visible -->
+        <a class="nav-link ms-4" href="/listings/new">Become a Host</a>
+
+        <% if(typeof currentUser !== "undefined" && currentUser) { %>
+        <!-- Wishlist - only when logged in -->
+        <a class="nav-link ms-4" href="/wishlist">
+          <i class="fa-regular fa-heart"></i>
+        </a>
+
+        <!-- User Icon with Dropdown (Works on all devices) -->
+        <div class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="text-decoration: none"
+          >
+            <i class="fa-regular fa-user ms-4" style="font-size: 1rem"></i>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end bg-light"
+            style="min-width: 180px; border-radius: 1rem"
+          >
+            <li>
+              <a class="dropdown-item" href="/dashboard">
+                <i class="fa-solid fa-gauge me-2"></i>Dashboard
+              </a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="/logout">
+                <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <% } else { %>
+        <!-- Login & Signup - only when NOT logged in -->
+        <a class="nav-link ms-4" href="/login"><b>Login</b></a>
+        <a class="nav-link ms-4" href="/signup"><b>Sign up</b></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

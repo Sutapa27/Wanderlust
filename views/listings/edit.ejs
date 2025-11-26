@@ -1,0 +1,196 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h3>
+      <a
+        href="/listings/<%= listing._id %>"
+        class="text-dark me-2"
+        style="text-decoration: none"
+      >
+        <i class="fa-solid fa-arrow-left" style="font-size: 1.4rem"></i>
+      </a>
+      &nbsp;Edit your Listing
+    </h3>
+    <br />
+    <form
+      action="/listings/<%= listing._id %>?_method=PUT"
+      method="post"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title: </label>
+        <input
+          type="text"
+          name="listing[title]"
+          value="<%= listing.title %>"
+          class="form-control"
+          maxlength="25"
+          required
+        />
+        <div class="valid-feedback">Title looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description: </label>
+        <textarea
+          type="text"
+          name="listing[description]"
+          class="form-control"
+          required
+        >
+<%= listing.description %></textarea
+        >
+        <div class="invalid-feedback">Please enter a short description.</div>
+      </div>
+      <label class="form-label">Category: </label>
+
+      <div class="d-flex flex-wrap gap-3 mb-3">
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Trending" <%=
+          listing.category.includes('Trending') ? 'checked' : '' %>
+          autocomplete="off"> Trending
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Mountains"
+          <%= listing.category.includes('Mountains') ? 'checked' : '' %>
+          autocomplete="off"> Mountains
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Beach" <%=
+          listing.category.includes('Beach') ? 'checked' : '' %>
+          autocomplete="off"> Beach
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Rooms" <%=
+          listing.category.includes('Rooms') ? 'checked' : '' %>
+          autocomplete="off"> Rooms
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Igloo" <%=
+          listing.category.includes('Igloo') ? 'checked' : '' %>
+          autocomplete="off"> Igloo
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Dome" <%=
+          listing.category.includes('Dome') ? 'checked' : '' %>
+          autocomplete="off"> Dome
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Amazing
+          Pools" <%= listing.category.includes('Amazing Pools') ? 'checked' : ''
+          %> autocomplete="off"> Amazing Pools
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="House Boats"
+          <%= listing.category.includes('House Boats') ? 'checked' : '' %>
+          autocomplete="off"> House Boats
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Camping" <%=
+          listing.category.includes('Camping') ? 'checked' : '' %>
+          autocomplete="off"> Camping
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Farms" <%=
+          listing.category.includes('Farms') ? 'checked' : '' %>
+          autocomplete="off"> Farms
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Arctic" <%=
+          listing.category.includes('Arctic') ? 'checked' : '' %>
+          autocomplete="off"> Arctic
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Castles" <%=
+          listing.category.includes('Castles') ? 'checked' : '' %>
+          autocomplete="off"> Castles
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Iconic
+          Cities" <%= listing.category.includes('Iconic Cities') ? 'checked' :
+          '' %> autocomplete="off"> Iconic Cities
+        </label>
+
+        <label class="btn btn-outline-dark">
+          <input type="checkbox" name="listing[category][]" value="Play" <%=
+          listing.category.includes('Play') ? 'checked' : '' %>
+          autocomplete="off"> Play
+        </label>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Original listing image: </label>
+        <br />
+        <img
+          src="<%= originalImageUrl %>"
+          style="height: 200px; width: 200px; object-fit: cover"
+          alt="listing_image"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload New Image : </label>
+        <input
+          type="file"
+          name="listing[images]"
+          class="form-control"
+          multiple
+        />
+      </div>
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price: </label>
+          <input
+            type="number"
+            name="listing[price]"
+            value="<%=listing.price%>"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Price should be valid.</div>
+        </div>
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Country: </label>
+          <input
+            type="text"
+            name="listing[country]"
+            value="<%= listing.country %>"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="invalid-feedback">Country name should be valid.</div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location: </label>
+        <input
+          type="text"
+          name="listing[location]"
+          value="<%= listing.location %>"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Location should be valid.</div>
+      </div>
+
+      <br />
+      <button class="btn add-btn">Edit</button>
+
+      <br />
+      <br />
+    </form>
+  </div>
+</div>

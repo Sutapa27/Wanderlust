@@ -1,0 +1,24 @@
+<!-- Sticky Bottom Search Bar (Visible only on small screens) -->
+<div id="mobile-search-bar" class="sticky-bottom-search d-md-none">
+  <div class="container">
+    <form
+      class="d-flex align-items-center bg-white shadow rounded-pill px-3 py-2"
+      action="/listings/search"
+      method="GET"
+      role="search"
+    >
+      <button type="submit" class="btn" style="color: #ff385c">
+        <i class="fa-solid fa-magnifying-glass me-2"></i>
+      </button>
+
+      <input
+        type="search"
+        class="form-control border-0"
+        placeholder="What's your next destination?"
+        aria-label="Search destination"
+        name="location"
+        required
+      />
+    </form>
+  </div>
+</div>
