@@ -36,14 +36,8 @@ body{
 }
 /* Pop up above keyboard when input is focused */
 .sticky-bottom-search.focused {
-  position: fixed;
-  top: 0;
-  bottom: auto;
-  left: 0;
-  width: 100%;
-  padding: 1rem 0;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  bottom: 50vh;
+ 
 }
 
 /* Hide on scroll down */
