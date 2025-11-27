@@ -34,24 +34,32 @@ if (searchInput) {
   // When user focuses on input (keyboard opens)
   searchInput.addEventListener('focus', () => {
     searchBar.classList.add('focused');
+    // Disable scroll hiding while typing
+    window.removeEventListener('scroll', handleScroll);
   });
 
   // When user is done (keyboard closes)
   searchInput.addEventListener('blur', () => {
-    searchBar.classList.remove('focused');
+    setTimeout(() => {
+      searchBar.classList.remove('focused');
+      // Re-enable scroll hiding
+      window.addEventListener('scroll', handleScroll);
+    }, 300);
   });
 }
 
-window.addEventListener("scroll", function () {
+// Move scroll handler to a named function
+function handleScroll() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
   if (scrollTop > lastScrollTop) {
-    // scrolling down → hide bar
     searchBar.classList.add("hide");
   } else {
-    // scrolling up → show bar
     searchBar.classList.remove("hide");
   }
 
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // avoid negative scrolling
-});
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+}
+
+// Use the named function
+window.addEventListener("scroll", handleScroll);
