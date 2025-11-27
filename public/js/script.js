@@ -42,14 +42,23 @@ if (searchInput) {
   });
 }
 
+let hasScrolled = false;
+
 window.addEventListener("scroll", function () {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (scrollTop > lastScrollTop) {
-    searchBar.classList.add("hide");
-  } else {
-    searchBar.classList.remove("hide");
+  // Mark that the user has scrolled at least once
+  if (!hasScrolled) hasScrolled = true;
+
+  // Only hide/show AFTER first scroll
+  if (hasScrolled) {
+    if (scrollTop > lastScrollTop) {
+      searchBar.classList.add("hide");
+    } else {
+      searchBar.classList.remove("hide");
+    }
   }
 
   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
+

@@ -36,7 +36,7 @@ body{
 }
 /* Pop up above keyboard when input is focused */
 .sticky-bottom-search.focused {
-  bottom: 50vh;
+  bottom: 30vh;
  
 }
 
