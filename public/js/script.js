@@ -27,6 +27,21 @@
 let lastScrollTop = 0;
 const searchBar = document.getElementById("mobile-search-bar");
 
+// Handle keyboard pop-up on mobile
+const searchInput = searchBar ? searchBar.querySelector('input[type="search"]') : null;
+
+if (searchInput) {
+  // When user focuses on input (keyboard opens)
+  searchInput.addEventListener('focus', () => {
+    searchBar.classList.add('focused');
+  });
+
+  // When user is done (keyboard closes)
+  searchInput.addEventListener('blur', () => {
+    searchBar.classList.remove('focused');
+  });
+}
+
 window.addEventListener("scroll", function () {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 

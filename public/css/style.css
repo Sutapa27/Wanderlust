@@ -32,7 +32,13 @@ body{
   left: 0;
   width: 100%;
   z-index: 1030; /* stays above most elements */
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease, bottom 0.3s ease;
+}
+/* Pop up above keyboard when input is focused */
+.sticky-bottom-search.focused {
+  bottom: 0;
+  top: auto;
+  position: fixed;
 }
 
 /* Hide on scroll down */

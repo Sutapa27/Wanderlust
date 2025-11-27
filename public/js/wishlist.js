@@ -5,7 +5,7 @@ async function removeFromWishlist(event, listingId) {
   console.log("Removing from wishlist:", listingId);
 
   try {
-    const response = await fetch(`/wishlist/api/remove/${listingId}`, {
+    const response = await fetch(`/wishlist/remove/${listingId}`, {
       // ← Changed
       method: "DELETE",
       headers: {
